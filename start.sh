@@ -2,6 +2,7 @@
 ./vendor/bin/nut database:update;
 mkdir -p ./app/cache;
 mkdir -p ./app/config;
+mkdir -p ./app/database;
 mkdir -p ./public/extensions;
 mkdir -p ./public/extensions/var;
 mkdir -p ./public/files;
