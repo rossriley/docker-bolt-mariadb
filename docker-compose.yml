@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+    db:
+        image: mariadb
+        network_mode: "bridge"
+        environment:
+            - MYSQL_ROOT_PASSWORD=${APP_PASSWORD}
+            - MYSQL_USER=${APP_USER}
+            - MYSQL_PASSWORD=${APP_PASSWORD}
+            - MYSQL_DATABASE=${APP_USER}
+        volumes:
+            - ./db-data:/var/lib/mysql
+    bolt:
+        build: .
+        image: bolt/mysql
+        network_mode: "bridge"
+        environment:
+            - VIRTUAL_HOST=${VIRTUAL_HOST}
+            - LETSENCRYPT_HOST=${VIRTUAL_HOST}
+            - LETSENCRYPT_EMAIL=ross@oneblackbear.com
+        volumes:
+            - ./uploads:/var/www/html/public/files
+        links:
+            - db:mysql
