@@ -17,8 +17,6 @@ services:
         network_mode: "bridge"
         environment:
             - VIRTUAL_HOST=${VIRTUAL_HOST}
-            - LETSENCRYPT_HOST=${VIRTUAL_HOST}
-            - LETSENCRYPT_EMAIL=ross@oneblackbear.com
         volumes:
             - ./uploads:/var/www/html/public/files
         links:
